@@ -1,7 +1,8 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
+  
   return (
     <div className="App">
       <h2>Recap Country</h2>
@@ -14,17 +15,29 @@ function App() {
 
 
 const styleSence={
-  backgroundColor: 'red',
+  backgroundColor: 'gray',
   margin: '20px',
   borderRadius: '20px',
   padding: '20px'
 }
 
+
+
+
+
 function Country(props) {
+  const [power, setPower]= useState(1);
+  const powerBoost = ()=> {
+    const newPower = power * 2;
+    setPower(newPower)
+  }
+  
   return (
     <div style={styleSence}>
       <h2>Country Name: {props.name}</h2>
       <p>Speciality: {props.speciality}</p>
+      <h4>Power: {power}</h4>
+      <button onClick={powerBoost}>Boost Power</button>
     </div>
   )
 }
